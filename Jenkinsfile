@@ -11,23 +11,7 @@ pipeline {
             cucumber reportTitle : 'API Report',
             fileIncludePattern: 'target/exemple-report.json'
 
-         stage('Documentation') {
-                      steps {
-                          bat 'mvnw.cmd javadoc:javadoc'
-                      }
-                      post {
-                       always {
-                                     publishHTML(target: [
-                                         allowMissing: false,
-                                         alwaysLinkToLastBuild: true,
-                                         keepAll: true,
-                                         reportDir: 'target/site/apidocs',
-                                         reportFiles: 'index.html',
-                                         reportName: 'Documentation'
-                                     ])
-                       }
-                      }
-                 }
+
 
     recordCoverage(tools: [[parser: 'JACOCO']],
             id: 'jacoco', name: 'JaCoCo Coverage',
@@ -38,5 +22,23 @@ pipeline {
 }
 
 }
+
+         stage('Documentation') {
+                      steps {
+                          bat 'mvnw.cmd javadoc:javadoc'
+                      }
+                      post {
+                       always {
+                                     publishHTML(target: [
+                                         allowMissing: false,
+                                         alwaysLinkToLastBuild: true,
+                                         keepAll: true,
+                                         reportDir: 'target/site',
+                                         reportFiles: 'index.html',
+                                         reportName: 'Documentation'
+                                     ])
+                       }
+                      }
+                 }
 }
 }
