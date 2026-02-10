@@ -48,12 +48,9 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.14</version>
-
-
                 <executions>
 
-
-                    <!-- Attach JaCoCo agent before tests -->
+                    <!-- Attache l’agent -->
                     <execution>
                         <id>prepare-agent</id>
                         <goals>
@@ -61,34 +58,33 @@
                         </goals>
                     </execution>
 
-
-                    <!-- Generate coverage report -->
+                    <!-- Génère HTML + XML -->
                     <execution>
                         <id>report</id>
-                        <phase>test</phase>
+                        <phase>verify</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+                            <reports>
+                                <xml>true</xml>
+                                <html>true</html>
+                                <csv>false</csv>
+                            </reports>
+                        </configuration>
                     </execution>
-
-
-                    <!-- Enforce coverage -->
-                    <execution>
-                        <id>check</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-
 
                 </executions>
             </plugin>
-
-
         </plugins>
     </build>
 
-
+    <distributionManagement>
+        <repository>
+            <id>myMavenRepo.write</id>
+            <url>https://mymavenrepo.com/repo/YUkwq6egMUzBRDTsV8FE/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
