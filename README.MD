@@ -10,4 +10,7 @@ Cucumber reports:
 
 
 src/test/java/ExampleTest.java
-generate a json file , jenkins use to getnerate the tests
+generate a json file , jenkins use to generate the tests
+
+
+
