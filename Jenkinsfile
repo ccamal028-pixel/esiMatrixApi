@@ -40,5 +40,12 @@ pipeline {
                        }
                       }
                  }
+
+             stage('Build') {
+                     steps {
+                         bat 'mvn package'
+                         archiveArtifacts artifacts: 'target/*.jar'
+                     }
+                 }
 }
 }
