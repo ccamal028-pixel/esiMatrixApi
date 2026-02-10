@@ -47,7 +47,7 @@ pipeline {
                          archiveArtifacts artifacts: 'target/*.jar'
                      }
                  }
-            stage('Build') {
+            stage('myMavenDeploy') {
                  steps {
                      bat 'mvn deploy'
                  }
