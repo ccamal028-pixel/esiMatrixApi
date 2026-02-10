@@ -55,7 +55,7 @@ pipeline {
 
 stage('slack') {
     steps {
-        bat """
+        powershell """
         \$body = @{
             text = "deploy completed succesfully!"
         } | ConvertTo-Json
