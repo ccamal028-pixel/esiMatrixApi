@@ -7,6 +7,10 @@
     <groupId>dz.esi</groupId>
     <artifactId>MatrixApi</artifactId>
     <version>1.0</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>readingMyMatrix</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

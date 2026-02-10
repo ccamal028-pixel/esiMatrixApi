@@ -52,5 +52,22 @@ pipeline {
                      bat 'mvn deploy'
                  }
              }
+
+stage('slack') {
+    steps {
+        bat """
+        \$body = @{
+            text = "deploy completed succesfully!"
+        } | ConvertTo-Json
+
+        Invoke-RestMethod -Uri "${slackUrl}" `
+                          -Method Post `
+                          -ContentType "application/json" `
+                          -Body \$body
+        """
+    }
+}
+
+             }
 }
 }
