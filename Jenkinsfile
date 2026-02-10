@@ -25,7 +25,7 @@ pipeline {
 
          stage('Documentation') {
                       steps {
-                          bat 'mvnw.cmd javadoc:javadoc'
+                          bat 'mvn javadoc:javadoc'
                       }
                       post {
                        always {
