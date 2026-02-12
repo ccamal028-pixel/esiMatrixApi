@@ -76,6 +76,23 @@ stage('slack') {
         """
     }
 
+      steps {
+        bat """
+        curl -X POST https://api.github.com/repos/ccamal028-pixel/esiMatrixApi/releases \
+          -H "Authorization: Bearer ${git_bearer}" \
+          -H "Accept: application/vnd.github+json" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "tag_name": "v1.0",
+            "name": "Release v1.0",
+            "body": "Production release",
+            "draft": false,
+            "prerelease": false
+          }'
+
+        """
+    }
+
 }
 
              }
