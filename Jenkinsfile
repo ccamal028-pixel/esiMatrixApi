@@ -65,7 +65,7 @@ stage('slack') {
                           -ContentType "application/json" `
                           -Body \$body
         """
-    }*/
+    }   */
 
     steps {
         bat """
