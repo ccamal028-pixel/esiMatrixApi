@@ -75,6 +75,8 @@ stage('slack') {
              ${slackUrl}
         """
     }
+}
+stage('release') {
 
       steps {
         bat """
