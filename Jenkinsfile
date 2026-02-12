@@ -54,7 +54,7 @@ pipeline {
              }
 
 stage('slack') {
-    steps {
+/*    steps {
         powershell """
         \$body = @{
             text = "deploy completed succesfully!"
@@ -65,7 +65,17 @@ stage('slack') {
                           -ContentType "application/json" `
                           -Body \$body
         """
+    }*/
+
+    steps {
+        bat """
+        curl -X POST ^
+             -H "Content-Type: application/json" ^
+             -d "{\\"text\\":\\"deploy completed succesfully!\\"}" ^
+             ${slackUrl}
+        """
     }
+
 }
 
              }
